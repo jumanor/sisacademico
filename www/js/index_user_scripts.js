@@ -6,6 +6,8 @@
  */
  function register_event_handlers()
  {
+     //Cambiamos de nombre del boton atras
+     $(".button.backButton").html("ATRAS");//$.ui.popup('Hi there');
      //Enlaces Page Login
     $("body").append('<a id="idGoAlumno" href="#idPageAlumno"  class="style-31"></a>');
     $("body").append('<a id="idGoProfesor" href="#idPageProfesor"  class="style-31"></a>');  
