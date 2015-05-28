@@ -100,6 +100,12 @@
         <header class="wrapping-col wrap-element uib_w_22 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-6"><a class="button backButton">Back</a>
             <h1>ASISTENCIA</h1>
         </header>
+        <header class="wrapping-col wrap-element uib_w_23 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-7"><a class="button backButton">Back</a>
+            <h1>ASISTENCIA</h1>
+        </header>
+        <header class="wrapping-col wrap-element uib_w_24 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-8"><a class="button backButton">Back</a>
+            <h1>NOTAS</h1>
+        </header>
         <div class="uwrap" id="content">
             <div class="upage panel vertical-col" id="mainpage" data-header="af-header-2" data-footer="none">
                 <div class="table-thing with-label widget uib_w_2 d-margins" data-uib="app_framework/input" data-ver="1">
@@ -159,16 +165,17 @@
                         <option>Option 3</option>
                     </select>
                 </div>
-                <div class="table-thing with-label widget uib_w_16 d-margins" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-1">
+                <div class="table-thing with-label widget uib_w_16 d-margins" data-uib="app_framework/radio_button_group" data-ver="1" data-child-name="af-group-1" id="idPageProfesor_GrupoOpciones">
                     <label class="narrow-control label-top-left">Opciones</label>
+
                     <div class="wide-control">
                         <div class="widget uib_w_17" data-uib="app_framework/radio_button" data-ver="1">
-                            <input type="radio" id="af-radio-3" name="af-group-1">
-                            <label class="content-box" for="af-radio-3">Asistencia</label>
+                            <input type="radio" id="idEscogerProfesor_Asistencia" name="af-group-1">
+                            <label class="content-box" for="idEscogerProfesor_Asistencia">Asistencia</label>
                         </div>
                         <div class="widget uib_w_18" data-uib="app_framework/radio_button" data-ver="1">
-                            <input type="radio" id="af-radio-4" name="af-group-1">
-                            <label class="content-box" for="af-radio-4">Notas</label>
+                            <input type="radio" id="idEscogerProfesor_Notas" name="af-group-1">
+                            <label class="content-box" for="idEscogerProfesor_Notas">Notas</label>
                         </div>
                     </div>
                 </div><a class="button widget uib_w_19 d-margins" data-uib="app_framework/button" data-ver="1" id="idEscogerProfesor">Escoger</a>
@@ -176,6 +183,8 @@
             <div class="upage vertical-col left panel" id="idPageAlumno_Horario" data-header="af-header-4" data-footer="none"></div>
             <div class="upage vertical-col panel" id="idPageAlumno_Notas" data-header="af-header-5" data-footer="none"></div>
             <div class="upage vertical-col panel" id="idPageAlumno_Asistencia" data-header="af-header-6" data-footer="none"></div>
+            <div class="upage vertical-col left panel" id="idPageProfesor_Asistencia" data-header="af-header-7" data-footer="none"></div>
+            <div class="upage vertical-col panel" id="idPageProfesor_Notas" data-header="af-header-8" data-footer="none"></div>
         </div>
 
     </body>
