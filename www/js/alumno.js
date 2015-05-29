@@ -1,13 +1,14 @@
-(function()
-{
- "use strict";
- function register_event_handlers()
- {
-     
-       /* button  #idEscogerAlumno */
-    $(document).on("click", "#idEscogerAlumno", function(evt)
-    {
-        /* your code goes here */
+var ALUMNO = (function () {
+	var my = {}
+    /////////////////////////////////////////////////////////////////////////////////////
+    my.crearEnlaces=function(){
+        //Enlaces Page Alumno
+     $("body").append('<a id="idGoAlumno_Notas" href="#idPageAlumno_Notas"  class="style-31"></a>');  
+     $("body").append('<a id="idGoAlumno_Horario" href="#idPageAlumno_Horario"  class="style-31"></a>');  
+     $("body").append('<a id="idGoAlumno_Asistencia" href="#idPageAlumno_Asistencia"  class="style-31"></a>');  
+    };//////////////////////////////////////////////////////////////////////////////////
+	my.onClickEscogerAlumno = function () {
+		 /* your code goes here */
         var opciones=$("#idPageAlumno_GrupoOpciones :checked")[0].id;
         if(opciones=="idEscogerAlumno_Notas"){
             $("#idGoAlumno_Notas").click();
@@ -18,9 +19,7 @@
         else if(opciones=="idEscogerAlumno_Asistencia"){
             $("#idGoAlumno_Asistencia").click();
         }
-    
-    });
- }
-    
- document.addEventListener("app.Ready", register_event_handlers, false);
-})();    
+	};/////////////////////////////////////////////////////////////////////////////////
+
+	return my;
+}());
