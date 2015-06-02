@@ -31,28 +31,8 @@ var ALUMNO = (function () {
     function getCursos(idAlumno,callback){
         
         var param={};
-        param.idAlumno=idAlumno;
-        
-        $.ajax({
-            type:"POST",
-            url:GLOBAL.URL()+"/getCursoByIdAlumno",
-            data:"data="+JSON.stringify(param),
-            dataType : 'text',
-            success:function(data){
-                var data=JSON.parse(data);
-                if(data.status===1){
-                    callback(data.data);
-                }
-                if(data.status===0){
-                    UTILS.alert("ERROR DB:",data.message);           
-                    console.log("ERROR DB:"+data.message);
-                }
-            },
-            error:function(data){
-                UTILS.alert("ERROR",data);
-                console.log("ERROR:"+data);
-            }
-        });
+        param.idAlumno=idAlumno;    
+        UTILS.ajaxGeneric(param,"getCursoByIdAlumno",callback);
         
     }/////////////////////////////////////////////////////////////////////////////////
     my.cargarCursosDeAlumno=function(idAlumno){

@@ -17,19 +17,8 @@ var LOGIN = (function () {
         param.contrasenia=contrasenia;
         param.perfil=perfil;
         
-        $.ajax({
-            type:"POST",
-            url:GLOBAL.URL()+"/getLogin",
-            data:"data="+JSON.stringify(param),
-            //dataType : 'json',
-            dataType : 'text',
-            success:callback,
-            error:function(data){
-            
-                console.log("ERROR:"+data);
-            }
-        });
-        
+        UTILS.ajaxGenericStatus(param,"getLogin",callback);
+    
     }
     /////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -57,8 +46,6 @@ var LOGIN = (function () {
         var perfil=$("#idPerfil").val();
         
         Login(usuario,contrasenia,perfil,function(data){
-        
-                var data=JSON.parse(data);
             
                 console.log(data.status);
                 
