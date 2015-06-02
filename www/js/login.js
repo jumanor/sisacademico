@@ -64,8 +64,13 @@ var LOGIN = (function () {
                 
                 if(data.status===1){
                     
+                        GLOBAL_ALUMNO.setId(data.data.id);
+                        GLOBAL_ALUMNO.setUsuario(data.data.usuario);
+                        GLOBAL_ALUMNO.setIdAlumno(data.data.idAlumno);
+                    
                         if(perfil=="Alumno"){
                             $("#idGoAlumno").click();
+                            ALUMNO.cargarCursosDeAlumno(GLOBAL_ALUMNO.getIdAlumno());
                         }
                         else if(perfil=="Profesor"){
                             $("#idGoProfesor").click();

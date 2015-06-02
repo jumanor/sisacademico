@@ -69,11 +69,13 @@
         <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
         <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
         <script type="application/javascript" src="app_framework/themeRelease.js"></script>
+        <script type="application/javascript" src="js/utils.js"></script>
         <script type="application/javascript" src="js/global.js"></script>
+        <script type="application/javascript" src="js/globalAlumno.js"></script>
         <script type="application/javascript" src="js/index_user_scripts.js"></script>
         <script type="application/javascript" src="js/alumno.js"></script>
         <script type="application/javascript" src="js/profesor.js"></script>
-        <script type="application/javascript" src="js/login.js"></script>    
+        <script type="application/javascript" src="js/login.js"></script>
         <script type="application/javascript" src="app_framework/pageChangeRepeater.js"></script>
         <script type="application/javascript" src="xdk/ad/af_subpage.js"></script>
     </head>
@@ -114,11 +116,13 @@
             <div class="upage panel vertical-col" id="mainpage" data-header="af-header-2" data-footer="none">
                 <div class="table-thing with-label widget uib_w_2 d-margins" data-uib="app_framework/input" data-ver="1">
                     <label class="narrow-control label-inline" for="idUsuario">Usuario</label>
-                    <input class="wide-control" type="text" placeholder="Ingrese Usuario" id="idUsuario">
+
+                    <input class="wide-control" type="text" placeholder="Ingrese Usuario" id="idUsuario" value="jumanor">
                 </div>
                 <div class="table-thing with-label widget uib_w_3 d-margins" data-uib="app_framework/input" data-ver="1">
                     <label class="narrow-control label-inline" for="idContrasenia">Contraseña</label>
-                    <input class="wide-control" placeholder="Ingrese Contraseña" type="password" id="idContrasenia">
+
+                    <input class="wide-control" placeholder="Ingrese Contraseña" type="text" id="idContrasenia" value="jumanor">
                 </div>
                 <div class="table-thing with-label widget uib_w_4 d-margins" data-uib="app_framework/select" data-ver="1">
                     <label class="narrow-control label-inline" for="idPerfil">Perfil</label>
@@ -134,8 +138,9 @@
 
             <div class="upage vertical-col panel" id="idPageAlumno" data-header="af-header-1" data-footer="none">
                 <div class="table-thing with-label widget uib_w_8 d-margins" data-uib="app_framework/select" data-ver="1">
-                    <label class="narrow-control label-top-left">Cursos</label>
-                    <select class="wide-control">
+                    <label class="narrow-control label-top-left" for="idCursosAlumno">Cursos</label>
+
+                    <select class="wide-control" id="idCursosAlumno">
                         <option>Programacion II</option>
                         <option>Matematica II</option>
                         <option>Algoritmos</option>

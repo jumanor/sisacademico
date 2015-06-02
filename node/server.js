@@ -17,7 +17,19 @@ app.use(allowCrossDomain);
 
 var server = app.listen(PORT,IPADDRESS);
 console.log('Escuchando en '+IPADDRESS+':'+PORT);
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Metodo para autenticarse en el sistema
+ * 
+ * @param  {String} data.usuario      
+ * @param  {String} data.contrasenia
+ * 
+ * @return {Object} {Number} id 				identificador de usuario
+ *                  {String} usuario 			nombre de usuario
+ *                  {String} idAlumno 			identificador del alumno
+ *                  {String} nombresAlumno
+ *                  {String} apellidosAlumno          
+ */
 app.post('/getLogin', function(req, res){	
 	
     var data=req.param('data');
@@ -35,6 +47,9 @@ app.post('/getLogin', function(req, res){
 	var user={}
     	user.id=1;
     	user.usuario='jumanor';
+    	user.idAlumno=1;
+    	user.nombresAlumno="CARLOS";
+    	user.apellidosAlumno="CENTENO CENTENO";
 
 	var msn={};
 	msn.data=user;	
@@ -45,42 +60,37 @@ app.post('/getLogin', function(req, res){
 	        
    res.json(msn);
 	
-});
-app.post('/getAlumnos', function(req, res){	
-
-    	var data=req.param('data');
-	data=JSON.parse(data);    	
-
-	//console.log(data);
-
-	var ciclo=null;	
+});///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Obtenemos todos los Cursos del Alumno por identificador.
+ * 
+ * @param  {Number} data.idAlumno     Identificador del Alumno
+ * 
+ * @return {Array} {Number} id  	identificador del curso
+ *                 {String} nombre 	nombre del curso        
+ */
+app.post('/getCursoByIdAlumno', function(req, res){	
 	
-	if(data.ciclo=="I"){
-	  ciclo="I";
-	}
-	else if(data.ciclo=="II"){
-	  ciclo="II";
-	}	
+    var data=req.param('data');
+    data=JSON.parse(data);
+    //console.log(data);	
+    
+	var curso={}
+    	curso.id=1;
+    	curso.nombre='ALGORITMOS';
+    var curso1={}
+    	curso1.id=2;
+    	curso1.nombre='PROGRAMACION';
 	
-    	var user={}
-    	user.id=1;
-    	user.usuario='jumanor1';
-	user.ciclo=ciclo;
-    
-	var user1={}
-    	user1.id=2;
-    	user1.usuario='jumanor2';
-	user1.ciclo=ciclo;
-    
-	var users=[];
-	users[0]=user;
-	users[1]=user1;
+    var cursos=[];
+    	cursos[0]=curso;
+    	cursos[1]=curso1;
 
 	var msn={};
-	msn.data=users;	
+	msn.data=cursos;	
 	msn.status=1;
 	msn.message=null;
 	
-	res.json(msn);
+    res.json(msn);
 	
 });
