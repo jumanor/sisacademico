@@ -42,7 +42,7 @@ var ALUMNO = (function () {
             $("#idCursosAlumno").empty();
             for(var i=0;i<data.length;i++){
                 
-                $("#idCursosAlumno").append("<option>"+data[i].nombre+"</option>");            
+                $("#idCursosAlumno").append("<option idcurso="+data[i].id+">"+data[i].nombre+"</option>");            
             }
             
         });

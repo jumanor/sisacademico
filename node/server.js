@@ -75,12 +75,49 @@ app.post('/getCursoByIdAlumno', function(req, res){
     data=JSON.parse(data);
     //console.log(data);	
     
+    var idAlumno=data.idAlumno;
+
 	var curso={}
     	curso.id=1;
     	curso.nombre='ALGORITMOS';
     var curso1={}
     	curso1.id=2;
     	curso1.nombre='PROGRAMACION';
+	
+    var cursos=[];
+    	cursos[0]=curso;
+    	cursos[1]=curso1;
+
+	var msn={};
+	msn.data=cursos;	
+	msn.status=1;
+	msn.message=null;
+	
+    res.json(msn);
+	
+});
+/**
+ * Obtenemos todos los Cursos del Profesor por identificador.
+ * 
+ * @param  {Number} data.idProfesor     Identificador del Profesor
+ * 
+ * @return {Array} {Number} id  	identificador del curso
+ *                 {String} nombre 	nombre del curso        
+ */
+app.post('/getCursoByIdProfesor', function(req, res){	
+	
+    var data=req.param('data');
+    data=JSON.parse(data);
+    //console.log(data);	
+    
+    var idProfesor=data.idProfesor;
+
+	var curso={}
+    	curso.id=1;
+    	curso.nombre='MATEMATICA I';
+    var curso1={}
+    	curso1.id=2;
+    	curso1.nombre='FISICA II';
 	
     var cursos=[];
     	cursos[0]=curso;

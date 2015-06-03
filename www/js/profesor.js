@@ -16,6 +16,20 @@
             $("#idGoProfesor_Notas").click();
         }
 	};///////////////////////////////////////////////////////////////////////////////
+  my.cargarCursosDeProfesor=function(idProfesor){
+        
+        var param={};
+        param.idProfesor=idProfesor;    
+        UTILS.ajaxGeneric(param,"getCursoByIdProfesor",function(data){
 
+          $("#idCursosProfesor").empty();
+            for(var i=0;i<data.length;i++){
+                
+                $("#idCursosProfesor").append("<option idcurso="+data[i].id+">"+data[i].nombre+"</option>");            
+            }
+
+        });
+        
+    }/////////////////////////////////////////////////////////////////////////////////
 	return my;
 }());

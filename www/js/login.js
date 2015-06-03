@@ -61,6 +61,7 @@ var LOGIN = (function () {
                         }
                         else if(perfil=="Profesor"){
                             $("#idGoProfesor").click();
+                            PROFESOR.cargarCursosDeProfesor(GLOBAL_ALUMNO.getIdAlumno());
                         }
                         else if(perfil=="Administrador"){
 
