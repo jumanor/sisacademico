@@ -51,17 +51,17 @@ var LOGIN = (function () {
                 
                 if(data.status===1){
                     
-                        GLOBAL_ALUMNO.setId(data.data.id);
-                        GLOBAL_ALUMNO.setUsuario(data.data.usuario);
-                        GLOBAL_ALUMNO.setIdAlumno(data.data.idAlumno);
+                        GLOBAL_USUARIO.setId(data.data.id);
+                        GLOBAL_USUARIO.setUsuario(data.data.usuario);
+                        GLOBAL_USUARIO.setIdentificador(data.data.identificador);
                     
                         if(perfil=="Alumno"){
                             $("#idGoAlumno").click();
-                            ALUMNO.cargarCursosDeAlumno(GLOBAL_ALUMNO.getIdAlumno());
+                            ALUMNO.cargarCursosDeAlumno(GLOBAL_USUARIO.getIdentificador());
                         }
                         else if(perfil=="Profesor"){
                             $("#idGoProfesor").click();
-                            PROFESOR.cargarCursosDeProfesor(GLOBAL_ALUMNO.getIdAlumno());
+                            PROFESOR.cargarCursosDeProfesor(GLOBAL_USUARIO.getIdentificador());
                         }
                         else if(perfil=="Administrador"){
 

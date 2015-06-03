@@ -26,9 +26,9 @@ console.log('Escuchando en '+IPADDRESS+':'+PORT);
  * 
  * @return {Object} {Number} id 				identificador de usuario
  *                  {String} usuario 			nombre de usuario
- *                  {String} idAlumno 			identificador del alumno
- *                  {String} nombresAlumno
- *                  {String} apellidosAlumno          
+ *                  {String} identificador 		identificador del alumno o profesor o administrador
+ *                  {String} nombres 			nombres del alumno o profesor o administrador
+ *                  {String} apellidos 			apellidos del alumno o profesor o administrador          
  */
 app.post('/getLogin', function(req, res){	
 	
@@ -43,18 +43,32 @@ app.post('/getLogin', function(req, res){
 	msn.message="NO AUTENTICADO";
     }
     else{
+    	var identificador=null;
+	    if(data.perfil=="Alumno"){
+	    	identificador=1;
 
-	var user={}
-    	user.id=1;
-    	user.usuario='jumanor';
-    	user.idAlumno=1;
-    	user.nombresAlumno="CARLOS";
-    	user.apellidosAlumno="CENTENO CENTENO";
+	    }
+	    if(data.perfil=="Profesor"){
+	    	identificador=2;
+	    	
+	    }
+	    if(data.perfil=="Administrador"){
+			identificador=3;
+	    	
+	    }	
 
-	var msn={};
-	msn.data=user;	
-	msn.status=1;
-	msn.message=null;
+		var user={}
+	    	user.id=1;
+	    	user.usuario='jumanor';
+	    	
+	    	user.identificador=identificador;
+	    	user.nombres="CARLOS";
+	    	user.apellidos="CENTENO CENTENO";
+
+		var msn={};
+		msn.data=user;	
+		msn.status=1;
+		msn.message=null;
 	
    }				
 	        
