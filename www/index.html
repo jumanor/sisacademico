@@ -38,7 +38,7 @@
 
         <link rel="stylesheet" href="css/app.css">
         <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-
+        <link rel="stylesheet" href="css/grilla.css">
         <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
         <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
@@ -190,9 +190,112 @@
                     </div>
                 </div><a class="button widget uib_w_19 d-margins" data-uib="app_framework/button" data-ver="1" id="idEscogerProfesor">Escoger</a>
             </div>
-            <div class="upage vertical-col left panel" id="idPageAlumno_Horario" data-header="af-header-4" data-footer="none"></div>
-            <div class="upage vertical-col panel" id="idPageAlumno_Notas" data-header="af-header-5" data-footer="none"></div>
-            <div class="upage vertical-col panel" id="idPageAlumno_Asistencia" data-header="af-header-6" data-footer="none"></div>
+            <div class="upage vertical-col left panel" id="idPageAlumno_Horario" data-header="af-header-4" data-footer="none">
+            <div id="no-more-tables">
+            <table>
+		<thead>
+		<tr>
+			<th>DIA</th>
+			<th>INICIO</th>
+			<th>FIN</th>
+			<th>AULA</th>
+			<th>TIPO</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td data-title="DIA">LUNES</td>
+			<td data-title="INICIO">08:00</td>
+			<td data-title="FIN">10:00</td>
+			<td data-title="AULA">101</td>
+			<td data-title="TIPO">TEORIA</td>
+		</tr>
+		<tr>
+			<td data-title="DIA">MARTES</td>
+			<td data-title="INICIO">08:00</td>
+			<td data-title="FIN">10:00</td>
+			<td data-title="AULA">101</td>
+			<td data-title="TIPO">TEORIA</td>
+		</tr>
+		<tr>
+			<td data-title="DIA">MIERCOLES</td>
+			<td data-title="INICIO">08:00</td>
+			<td data-title="FIN">10:00</td>
+			<td data-title="AULA">101</td>
+			<td data-title="TIPO">PRACTICA</td>
+		</tr>
+		</tbody>
+	</table> 
+            </div>    
+            
+            </div>
+            <div class="upage vertical-col panel" id="idPageAlumno_Notas" data-header="af-header-5" data-footer="none">
+            
+            <div id="no-more-tables">
+            <table>
+		<thead>
+		<tr>
+			<th>NOTA</th>
+			<th>FECHA</th>
+			<th>TIPO</th>
+			<th>COMENTARIO</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td data-title="NOTA">15</td>
+			<td data-title="FECHA">10/01/2015</td>
+			<td data-title="TIPO">TEORIA</td>
+			<td data-title="COMENTARIO">PRIMER EXAMEN</td>
+		</tr>
+		<tr>
+			<td data-title="NOTA">11</td>
+			<td data-title="FECHA">10/12/2015</td>
+			<td data-title="TIPO">PRACTICA</td>
+			<td data-title="COMENTARIO">PRIMER EXAMEN</td>
+		</tr>
+        <tr>
+			<td data-title="NOTA">10</td>
+			<td data-title="FECHA">10/16/2015</td>
+			<td data-title="TIPO">TEORIA</td>
+			<td data-title="COMENTARIO">SEGUNDO EXAMEN</td>
+		</tr>    
+		</tbody>
+	</table> 
+            </div>
+            
+            </div>
+            <div class="upage vertical-col panel" id="idPageAlumno_Asistencia" data-header="af-header-6" data-footer="none">
+            <div id="no-more-tables">
+            <table>
+		<thead>
+		<tr>
+			<th>ESTADO</th>
+			<th>FECHA</th>
+			<th>COMENTARIO</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td data-title="ESTADO">FALTO</td>
+			<td data-title="FECHA">10/01/2015</td>
+			<td data-title="COMENTARIO">PRIMER EXAMEN</td>
+		</tr>
+        <tr>
+			<td data-title="ESTADO">ASISTIO</td>
+			<td data-title="FECHA">10/01/2015</td>
+			<td data-title="COMENTARIO">PRIMER EXAMEN</td>
+		</tr>
+        <tr>
+			<td data-title="ESTADO">FALTO</td>
+			<td data-title="FECHA">10/01/2015</td>
+			<td data-title="COMENTARIO">PRIMER EXAMEN</td>
+		</tr>
+		</tbody>
+	</table> 
+            </div>
+            
+            </div>
             <div class="upage vertical-col left panel" id="idPageProfesor_Asistencia" data-header="af-header-7" data-footer="none"></div>
             <div class="upage vertical-col panel" id="idPageProfesor_Notas" data-header="af-header-8" data-footer="none"></div>
         </div>
