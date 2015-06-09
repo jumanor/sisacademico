@@ -111,6 +111,58 @@ app.post('/getCursoByIdAlumno', function(req, res){
 	
 });
 /**
+ * Obtenemos todos los Horarios de un determinado Curso por Id de Alumno
+ * 
+ * @param  {Number} data.idAlumno     
+ * @param  {Number} data.idCurso      
+ * 
+ * @return {Array}  {Number} id
+ *                  {String} dia
+ *                  {String} inicio
+ *                  {String} fin
+ *                  {String} aula
+ *                  {String} tipo         
+ */
+app.post('/getHorariosDeCursoByIdAlumno', function(req, res){	
+	
+    var data=req.param('data');
+    data=JSON.parse(data);
+    //console.log(data);	
+    
+    var idAlumno=data.idAlumno;
+    var idCurso=data.idCurso;
+
+    var horarios=[];
+
+	var horario={}
+    	horario.id=1;
+    	horario.dia='LUNES';
+    	horario.inicio='08:00';
+    	horario.fin='12:00';
+    	horario.aula='102';
+    	horario.tipo='TEORIA';
+    
+    	horarios[0]=horario;
+
+	var horario={}
+    	horario.id=1;
+    	horario.dia='MARTES';
+    	horario.inicio='07:00';
+    	horario.fin='19:00';
+    	horario.aula='104';
+    	horario.tipo='TEORIA';
+		
+		horarios[1]=horario;   
+
+	var msn={};
+	msn.data=horarios;	
+	msn.status=1;
+	msn.message=null;
+	
+    res.json(msn);
+	
+});
+/**
  * Obtenemos todos los Cursos del Profesor por identificador.
  * 
  * @param  {Number} data.idProfesor     Identificador del Profesor

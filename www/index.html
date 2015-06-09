@@ -39,6 +39,7 @@
         <link rel="stylesheet" href="css/app.css">
         <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
         <link rel="stylesheet" href="css/grilla.css">
+        <link rel="stylesheet" href="css/jumanor.css">
         <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
         <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
         <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
@@ -191,6 +192,7 @@
                 </div><a class="button widget uib_w_19 d-margins" data-uib="app_framework/button" data-ver="1" id="idEscogerProfesor">Escoger</a>
             </div>
             <div class="upage vertical-col left panel" id="idPageAlumno_Horario" data-header="af-header-4" data-footer="none">
+            <div class="titulo" id="idPageAlumno_Horario_Titulo">MATEMATICA</div>    
             <div id="no-more-tables">
             <table>
 		<thead>
@@ -202,7 +204,7 @@
 			<th>TIPO</th>
 		</tr>
 		</thead>
-		<tbody>
+		<tbody id="HorariosDeCursoByIdAlumno">
 		<tr>
 			<td data-title="DIA">LUNES</td>
 			<td data-title="INICIO">08:00</td>
