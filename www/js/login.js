@@ -71,7 +71,7 @@ var LOGIN = (function () {
                 if(data.status===0){
                     
                      navigator.notification.alert(
-                        data.message,  // message
+                        data.message.message,  // message
                         function(){},         // callback
                         'Mensaje',            // title
                         'Aceptar'                  // buttonName

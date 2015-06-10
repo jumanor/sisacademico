@@ -2,6 +2,9 @@ var IPADDRESS="192.168.56.1";
 var PORT=9095
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/sisacademico');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -17,6 +20,7 @@ app.use(allowCrossDomain);
 
 var server = app.listen(PORT,IPADDRESS);
 console.log('Escuchando en '+IPADDRESS+':'+PORT);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var LOGIN=require('./login.js');
 var ALUMNO=require('./alumno.js');

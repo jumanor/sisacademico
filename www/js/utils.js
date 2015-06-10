@@ -23,8 +23,8 @@ var UTILS = (function () {
                     callback(data.data);
                 }
                 if(data.status===0){
-                    UTILS.alert("ERROR DB:",data.message);           
-                    console.log("ERROR DB:"+data.message);
+                    UTILS.alert("ERROR DB:",data.message.codigo+"::"+data.message.message);           
+                    console.log("ERROR DB:"+data.message.codigo+"::"+data.message.message);
                 }
             },
             error:function(data){
