@@ -49,6 +49,15 @@ module.exports.getLogin=function(usuario,contrasenia,perfil,callback){
 										nombres=alumno.nombres;
 										apellidos=alumno.apPaterno+" "+alumno.apMaterno;
 
+										usuario.id=data.id;
+										usuario.usuario=data.usuario;
+
+										usuario.identificador=identificador;  
+						    			usuario.nombres=nombres;		
+						    			usuario.apellidos=apellidos;	
+
+								 	  	callback(usuario,null);
+
 								});
 						    }
 						    if(data.perfil=="Profesor"){
@@ -63,18 +72,20 @@ module.exports.getLogin=function(usuario,contrasenia,perfil,callback){
 										nombres=profesor.nombres;
 										apellidos=profesor.apPaterno+" "+profesor.apMaterno;
 
+										usuario.id=data.id;
+										usuario.usuario=data.usuario;
+
+										usuario.identificador=identificador;  
+						    			usuario.nombres=nombres;		
+						    			usuario.apellidos=apellidos;	
+
+								 	  	callback(usuario,null);
+
 								});
 						    }
 						    
 
-						    usuario.id=data.id;
-						    usuario.usuario=data.usuario;
-
-						    usuario.identificador=identificador;  
-		    				usuario.nombres=nombres;		
-		    				usuario.apellidos=apellidos;	
-
-				 	  		callback(usuario,null);
+						    
 				 	}
 			}
 	});
