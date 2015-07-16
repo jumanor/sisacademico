@@ -1,4 +1,6 @@
-var UsuarioDB=require('./modelosDB/usuario.js');
+var LoginDB=require('./modelosDB/login.js');
+var AlumnoDB=require('./modelosDB/alumno.js');
+var ProfesorDB=require('./modelosDB/profesor.js');
 /**
  * Metodo para autenticarse en el sistema
  * 
@@ -14,10 +16,10 @@ var UsuarioDB=require('./modelosDB/usuario.js');
  */
 module.exports.getLogin=function(usuario,contrasenia,perfil,callback){
 
-	UsuarioDB.find({usuario:usuario,contrasenia:contrasenia,perfil:perfil}, function(err,data){
+	LoginDB.find({usuario:usuario,contrasenia:contrasenia,perfil:perfil}, function(err,data){
 
 			if (err){ 
-					  console.error(err);
+					  console.log(err);
 				      callback(-1,err);
 			}
 			else{	
@@ -30,25 +32,47 @@ module.exports.getLogin=function(usuario,contrasenia,perfil,callback){
 				 			var usuario={};
 
 				 			var identificador=null;
-						    if(data.perfil=="Alumno"){
-						    	identificador=1;
+				 			var nombres=null;
+				 			var apellidos=null;
 
+				 			console.log(data);
+
+						    if(data.perfil=="Alumno"){
+						    	
+								AlumnoDB.findById(data.persona).exec(function(err,alumno){
+										if(err){
+											console.log(err);
+											return callback(-1,err);	
+											
+										}
+										identificador=alumno.id;
+										nombres=alumno.nombres;
+										apellidos=alumno.apPaterno+" "+alumno.apMaterno;
+
+								});
 						    }
 						    if(data.perfil=="Profesor"){
-						    	identificador=2;
-						    	
-						    }
-						    if(data.perfil=="Administrador"){
-								identificador=3;
-						    	
-						    }
 
-						    usuario.id=data._id;
+						    	ProfesorDB.findById(data.persona).exec(function(err,profesor){
+										if(err){
+											console.log(err);
+											return callback(-1,err);	
+											
+										}
+										identificador=profesor.id;
+										nombres=profesor.nombres;
+										apellidos=profesor.apPaterno+" "+profesor.apMaterno;
+
+								});
+						    }
+						    
+
+						    usuario.id=data.id;
 						    usuario.usuario=data.usuario;
 
-						    usuario.identificador=identificador;  	//ESTO ES SOLO TEMPORAL
-		    				usuario.nombres="CARLOS";				//ESTO ES SOLO TEMPORAL
-		    				usuario.apellidos="CENTENO CENTENO";	//ESTO ES SOLO TEMPORAL
+						    usuario.identificador=identificador;  
+		    				usuario.nombres=nombres;		
+		    				usuario.apellidos=apellidos;	
 
 				 	  		callback(usuario,null);
 				 	}
