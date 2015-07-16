@@ -29,4 +29,6 @@ var PROFESOR=require('./profesor.js');
 LOGIN.getLogin(app);
 ALUMNO.getCursoByIdAlumno(app);
 ALUMNO.getHorariosDeCursoByIdAlumno(app);
+ALUMNO.getNotasDeCursoByIdAlumno(app);
+ALUMNO.getAsistenciasDeCursoByIdAlumno(app);
 PROFESOR.getCursoByIdProfesor(app);

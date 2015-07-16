@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 
 var schemaAsistencia = new mongoose.Schema({
 	asistencia:Boolean,
+	comentario:String,
 	fecha:Date
 });
 var schemaNota = new mongoose.Schema({
 	nota: Number,
+	fecha:Date,
 	descripcion:String
 });
 var schemaCurso = new mongoose.Schema({

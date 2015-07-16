@@ -6,6 +6,7 @@ var schemaHorario = new mongoose.Schema({
     horaFin: String//13:00
 });
 var schemaCurso = new mongoose.Schema({
+	aula:String,
 	tipo:String, //TEORIA PRACTICA
     nombre: String,
     horarios:[schemaHorario]

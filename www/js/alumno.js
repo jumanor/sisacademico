@@ -10,18 +10,56 @@ var ALUMNO = (function () {
 	my.onClickEscogerAlumno = function () {
 		 /* your code goes here */
         var opciones=$("#idPageAlumno_GrupoOpciones :checked")[0].id;
-        if(opciones=="idEscogerAlumno_Notas"){
-            $("#idGoAlumno_Notas").click();
-        }
-        else if(opciones=="idEscogerAlumno_Horario"){
-            $("#idGoAlumno_Horario").click();
-            
+        
             //<option idcurso="2">PROGRAMACION</option>
             //Capturamos el valor de idcurso    
             var index=$("#idCursosAlumno")[0].selectedIndex;
             var idCurso=$("#idCursosAlumno")[0].options[index].attributes[0].value;
             //Capturamos el Curso Seleccionado
             var curso=$("#idCursosAlumno")[0].options[index].value;
+            
+        
+        if(opciones=="idEscogerAlumno_Notas"){
+            $("#idGoAlumno_Notas").click();
+            $("#idPageAlumno_Notas_Titulo").html(curso);
+            
+            
+            var param={};
+            param.idAlumno=GLOBAL_USUARIO.getIdentificador();
+            param.idCurso=idCurso;    
+            UTILS.ajaxGeneric(param,"getNotasDeCursoByIdAlumno",function(data){
+                
+                $("#NotasDeCursoByIdAlumno").empty();
+                
+                for(var i=0;i<data.length;i++){
+                    
+                    var dia=document.createElement("td");
+                        dia.setAttribute("data-title","NOTA");
+                        dia.appendChild(document.createTextNode(data[i].nota));
+                    var inicio=document.createElement("td");
+                        inicio.setAttribute("data-title","FECHA");
+                        inicio.appendChild(document.createTextNode(data[i].fecha.split("T")[0]));
+                    var fin=document.createElement("td");
+                        fin.setAttribute("data-title","TIPO");
+                        fin.appendChild(document.createTextNode(data[i].tipo));
+                    var aula=document.createElement("td");
+                        aula.setAttribute("data-title","COMENTARIO");
+                        aula.appendChild(document.createTextNode(data[i].comentario));
+                    
+                    var fila=document.createElement("tr");
+                        fila.appendChild(dia);
+                        fila.appendChild(inicio);
+                        fila.appendChild(fin);
+                        fila.appendChild(aula);
+                    
+                    $("#NotasDeCursoByIdAlumno").append(fila);
+                }
+            
+            });
+            
+        }
+        else if(opciones=="idEscogerAlumno_Horario"){
+            $("#idGoAlumno_Horario").click();
             $("#idPageAlumno_Horario_Titulo").html(curso);
             
             var param={};
@@ -65,6 +103,37 @@ var ALUMNO = (function () {
         }
         else if(opciones=="idEscogerAlumno_Asistencia"){
             $("#idGoAlumno_Asistencia").click();
+            $("#idPageAlumno_Asistencias_Titulo").html(curso);
+            
+            
+            var param={};
+            param.idAlumno=GLOBAL_USUARIO.getIdentificador();
+            param.idCurso=idCurso;    
+            UTILS.ajaxGeneric(param,"getNotasDeCursoByIdAlumno",function(data){
+                
+                $("#AsistenciasDeCursoByIdAlumno").empty();
+                
+                for(var i=0;i<data.length;i++){
+                    
+                    var dia=document.createElement("td");
+                        dia.setAttribute("data-title","ESTADO");
+                        dia.appendChild(document.createTextNode(data[i].nota));
+                    var inicio=document.createElement("td");
+                        inicio.setAttribute("data-title","FECHA");
+                        inicio.appendChild(document.createTextNode(data[i].fecha.split("T")[0]));
+                    var aula=document.createElement("td");
+                        aula.setAttribute("data-title","COMENTARIO");
+                        aula.appendChild(document.createTextNode(data[i].comentario));
+                    
+                    var fila=document.createElement("tr");
+                        fila.appendChild(dia);
+                        fila.appendChild(inicio);
+                        fila.appendChild(aula);
+                    
+                    $("#AsistenciasDeCursoByIdAlumno").append(fila);
+                }
+            
+            });
         }
 	};/////////////////////////////////////////////////////////////////////////////////
     /**
