@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var schemaAsistencia = new mongoose.Schema({
 	asistencia:Boolean,
-	comentario:String,
+	comentario:{ type: String, default: "-" },
 	fecha:Date
 });
 var schemaNota = new mongoose.Schema({

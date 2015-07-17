@@ -109,7 +109,7 @@ var ALUMNO = (function () {
             var param={};
             param.idAlumno=GLOBAL_USUARIO.getIdentificador();
             param.idCurso=idCurso;    
-            UTILS.ajaxGeneric(param,"getNotasDeCursoByIdAlumno",function(data){
+            UTILS.ajaxGeneric(param,"getAsistenciasDeCursoByIdAlumno",function(data){
                 
                 $("#AsistenciasDeCursoByIdAlumno").empty();
                 
@@ -117,7 +117,14 @@ var ALUMNO = (function () {
                     
                     var dia=document.createElement("td");
                         dia.setAttribute("data-title","ESTADO");
-                        dia.appendChild(document.createTextNode(data[i].nota));
+                        var tmp="";
+                        if(data[i].estado===true){
+                            tmp="ASISTIO";
+                        }
+                        else{
+                            tmp="FALTO";
+                        }
+                        dia.appendChild(document.createTextNode(tmp));
                     var inicio=document.createElement("td");
                         inicio.setAttribute("data-title","FECHA");
                         inicio.appendChild(document.createTextNode(data[i].fecha.split("T")[0]));
