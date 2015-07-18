@@ -362,3 +362,53 @@ body:not(#afui) .upage-outer {
 #afui .wide-control > .d-margins {
   margin: 0;
 }
+.uib-button-bar .d-margins {
+  margin: 0;
+}
+@media all {
+  #afui .default-graphic-button {
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    background-color: #ffffff;
+  }
+}
+@media all {
+  #afui .hover-graphic-button:hover {
+    border-radius: 5px;
+    background-color: #eeeeee;
+  }
+}
+@media all {
+  #afui .active-graphic-button:active {
+    border-radius: 5px;
+    background-color: #dddddd;
+  }
+}
+@media all {
+  #afui .default-button-bar-height {
+    height: 200px;
+  }
+}
+@media all {
+  #afui .default-graphic-text {
+    text-align: center;
+  }
+}
+@media all {
+  #afui .default-graphic-sizing {
+    width: 150px !important;
+    -webkit-flex: 0 0 auto !important;
+    -moz-flex: 0 0 auto !important;
+    -ms-flex: 0 0 auto !important;
+    -o-flex: 0 0 auto !important;
+    flex: 0 0 auto !important;
+    padding: 5px;
+  }
+}
+@media all {
+  #afui .default-image-sizing > img {
+    width: 50px;
+  }
+}
