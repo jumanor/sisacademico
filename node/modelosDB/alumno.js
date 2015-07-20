@@ -6,6 +6,7 @@ var schemaAsistencia = new mongoose.Schema({
 	fecha:Date
 });
 var schemaNota = new mongoose.Schema({
+	idNotaCabecera:{ type: mongoose.Schema.Types.ObjectId},
 	nota: Number,
 	fecha:Date,
 	descripcion:String

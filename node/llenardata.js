@@ -29,25 +29,40 @@ function cargarData(){
     async.series([
 	function(callback){
            
-		    var tmp=new CursoDB({nombre:'MATEMATICA I'});
-		    tmp.tipo="TEORIA";
-        tmp.aula="101";
-		    tmp.horarios.push({dia:"LUNES",horaIni:"13:00",horaFin:"15:00"});
-		    tmp.horarios.push({dia:"MARTES",horaIni:"15:00",horaFin:"17:00"});
-		    CURSO1=tmp;
+		  var tmp=new CursoDB({nombre:'MATEMATICA I'});
+		  tmp.tipo="TEORIA";
+      tmp.aula="101";
+		  tmp.horarios.push({dia:"LUNES",horaIni:"13:00",horaFin:"15:00"});
+		  tmp.horarios.push({dia:"MARTES",horaIni:"15:00",horaFin:"17:00"});
+
+      tmp.cabeceraNotas.push({descripcion:"PRIMER EXAMEN"});
+      tmp.cabeceraNotas.push({descripcion:"SEGUNDO EXAMEN"});
+      tmp.cabeceraNotas.push({descripcion:"TERCER EXAMEN"});
+
+		  CURSO1=tmp;
 			
 			var tmp1=new CursoDB({nombre:'PROGRAMACION III'});
 			tmp1.tipo="TEORIA";
       tmp1.aula="102";
 			tmp1.horarios.push({dia:"LUNES",horaIni:"10:00",horaFin:"12:00"});
-		    tmp1.horarios.push({dia:"MIERCOLES",horaIni:"16:00",horaFin:"18:00"});
+		  tmp1.horarios.push({dia:"MIERCOLES",horaIni:"16:00",horaFin:"18:00"});
+
+      tmp1.cabeceraNotas.push({descripcion:"PRIMER EXAMEN"});
+      tmp1.cabeceraNotas.push({descripcion:"SEGUNDO EXAMEN"});
+      tmp1.cabeceraNotas.push({descripcion:"TERCER EXAMEN"});
+
 			CURSO2=tmp1;
 
 			var tmp2=new CursoDB({nombre:'FISICA II'});
 			tmp2.tipo="TEORIA";
       tmp2.aula="103";
 			tmp2.horarios.push({dia:"JUEVES",horaIni:"07:00",horaFin:"10:00"});
-		    tmp2.horarios.push({dia:"VIERNES",horaIni:"14:00",horaFin:"15:00"});
+		  tmp2.horarios.push({dia:"VIERNES",horaIni:"14:00",horaFin:"15:00"});
+
+      tmp2.cabeceraNotas.push({descripcion:"PRIMER EXAMEN"});
+      tmp2.cabeceraNotas.push({descripcion:"SEGUNDO EXAMEN"});
+      tmp2.cabeceraNotas.push({descripcion:"TERCER EXAMEN"});
+  
 			CURSO3=tmp2;
 
 			    tmp.save(function(){
@@ -63,35 +78,35 @@ function cargarData(){
           var fecha1=new Date(2015, 06, 18);
           var fecha2=new Date(2015, 06, 19);          
 
-           var notas=[];
-           notas.push({nota:13,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas.push({nota:15,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas.push({nota:17,descripcion:'TERCER EXAMEN',fecha:fecha2});
+           var notas=[];//CURSO01
+           notas.push({idNotaCabecera:CURSO1.cabeceraNotas[0].id,nota:13,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas.push({idNotaCabecera:CURSO1.cabeceraNotas[1].id,nota:15,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas.push({idNotaCabecera:CURSO1.cabeceraNotas[2].id,nota:17,descripcion:'TERCER EXAMEN',fecha:fecha2});
 
-			var notas1=[];
-           notas1.push({nota:11,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas1.push({nota:10,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas1.push({nota:09,descripcion:'TERCER EXAMEN',fecha:fecha2});
+			var notas1=[];//CURSO02
+           notas1.push({idNotaCabecera:CURSO2.cabeceraNotas[0].id,nota:11,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas1.push({idNotaCabecera:CURSO2.cabeceraNotas[1].id,nota:10,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas1.push({idNotaCabecera:CURSO2.cabeceraNotas[2].id,nota:09,descripcion:'TERCER EXAMEN',fecha:fecha2});
 
-			var notas2=[];
-           notas2.push({nota:17,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas2.push({nota:08,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas2.push({nota:11,descripcion:'TERCER EXAMEN',fecha:fecha2});
+			var notas2=[];//CURSO03
+           notas2.push({idNotaCabecera:CURSO3.cabeceraNotas[0].id,nota:17,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas2.push({idNotaCabecera:CURSO3.cabeceraNotas[1].id,nota:08,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas2.push({idNotaCabecera:CURSO3.cabeceraNotas[2].id,nota:11,descripcion:'TERCER EXAMEN',fecha:fecha2});
 
-           var notas3=[];
-           notas3.push({nota:14,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas3.push({nota:16,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas3.push({nota:19,descripcion:'TERCER EXAMEN',fecha:fecha2});
+           var notas3=[];//CURSO01
+           notas3.push({idNotaCabecera:CURSO1.cabeceraNotas[0].id,nota:14,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas3.push({idNotaCabecera:CURSO1.cabeceraNotas[1].id,nota:16,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas3.push({idNotaCabecera:CURSO1.cabeceraNotas[2].id,nota:19,descripcion:'TERCER EXAMEN',fecha:fecha2});
 
-			var notas4=[];
-           notas4.push({nota:10,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas4.push({nota:08,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas4.push({nota:07,descripcion:'TERCER EXAMEN',fecha:fecha2});
+			var notas4=[];//CURSO02
+           notas4.push({idNotaCabecera:CURSO2.cabeceraNotas[0].id,nota:10,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas4.push({idNotaCabecera:CURSO2.cabeceraNotas[1].id,nota:08,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas4.push({idNotaCabecera:CURSO2.cabeceraNotas[2].id,nota:07,descripcion:'TERCER EXAMEN',fecha:fecha2});
 
-			var notas5=[];
-           notas5.push({nota:15,descripcion:'PRIMER EXAMEN',fecha:fecha});
-           notas5.push({nota:05,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
-           notas5.push({nota:07,descripcion:'TERCER EXAMEN',fecha:fecha2});
+			var notas5=[];//CURSO03
+           notas5.push({idNotaCabecera:CURSO3.cabeceraNotas[0].id,nota:15,descripcion:'PRIMER EXAMEN',fecha:fecha});
+           notas5.push({idNotaCabecera:CURSO3.cabeceraNotas[1].id,nota:05,descripcion:'SEGUNDO EXAMEN',fecha:fecha1});
+           notas5.push({idNotaCabecera:CURSO3.cabeceraNotas[2].id,nota:07,descripcion:'TERCER EXAMEN',fecha:fecha2});
            
           
            var asistencias=[];
@@ -122,9 +137,23 @@ function cargarData(){
 
            	ALUMNO=alumno;
 
-        	alumno.save(function(err){
-        		if(err)console.log(err);
-        		alumno1.save(callback);
+            CURSO1.alumnos.push(alumno);
+            CURSO1.alumnos.push(alumno1);
+
+            CURSO2.alumnos.push(alumno);
+            CURSO2.alumnos.push(alumno1);
+
+            CURSO3.alumnos.push(alumno);
+            CURSO3.alumnos.push(alumno1);
+
+        	alumno.save(function(){
+        		alumno1.save(function(){
+              CURSO1.save(function(){
+                  CURSO2.save(function(){
+                      CURSO3.save(callback);
+                  });  
+              });
+            });
         	});          
         },
         function(callback){
@@ -135,16 +164,16 @@ function cargarData(){
            	profesor.apMaterno="VELASQUEZ";
 
            	profesor.cursos.push({idCurso:CURSO1.id,nombre:CURSO1.nombre,tipo:CURSO1.tipo});
-           	profesor.cursos.push({idCurso:CURSO2.id,nombre:CURSO2.nombre,tipo:CURSO2.nombre});
+           	profesor.cursos.push({idCurso:CURSO2.id,nombre:CURSO2.nombre,tipo:CURSO2.tipo});
 
 			var profesor1=new ProfesorDB();
            	profesor1.nombres="EDWIN";
            	profesor1.apPaterno="ROQUE";
            	profesor1.apMaterno="TITO";
 
-           	profesor1.cursos.push({idCurso:CURSO3.id,nombre:CURSO3.nombre,tipo:CURSO3.nombre});
+           	profesor1.cursos.push({idCurso:CURSO3.id,nombre:CURSO3.nombre,tipo:CURSO3.tipo});
       		
-      		PROFESOR=profesor1;
+      		PROFESOR=profesor;
 
       		profesor.save(function(){
       			profesor1.save(callback);

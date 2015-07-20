@@ -3,6 +3,8 @@ mongoose.connect('mongodb://localhost/sisacademico');
 
 var Login=require('./modelosDB/login.js');
 var Alumno=require('./modelosDB/alumno.js');
+var Profesor=require('./modelosDB/profesor.js');
+var Curso=require('./modelosDB/curso.js');
 
 //var login=new Login({usuario:'jumanor',contrasenia:'jumanor'});
 //var alumno=new Alumno({nombres:'jorge david'});
@@ -26,7 +28,7 @@ Login.find().populate("persona").exec(function(err,data){
 	 });
 });
 */
-Alumno.find().populate("idCurso").exec(function(err,data){
+Alumno.findById("55ab23e9bc1659a91be6e5b3").exec(function(err,data){
 	if(err)console.log(err);
 
 	console.log(data);

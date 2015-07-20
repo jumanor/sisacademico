@@ -313,7 +313,7 @@
 			</div>
 			<div class="upage vertical-col left panel" id="idPageProfesor_Asistencia" data-header="af-header-7" data-footer="none"></div>
 			<div class="upage vertical-col panel" id="idPageProfesor_Notas" data-header="af-header-8" data-footer="footerProfesorNotas">
-				<ul class="list widget uib_w_25 d-margins" data-uib="app_framework/listview" data-ver="1">
+				<ul id="DescripcionesDeCursoByIdProfesor" class="list widget uib_w_25 d-margins" data-uib="app_framework/listview" data-ver="1">
 					<li class="widget uib_w_26" data-uib="app_framework/listitem" data-ver="1"><a href="#idProfesor_Notas_Detalle">PRIMER EXAMEN</a>
 					</li>
 					<li class="widget uib_w_27" data-uib="app_framework/listitem" data-ver="1"><a>SEGUNDO EXAMEN</a>
@@ -324,7 +324,7 @@
 
 			</div>
 			<div class="upage vertical-col left panel" id="idProfesor_Notas_Detalle" data-header="af-header-9" data-footer="footerProfesorNotasDetalle">
-				<div class="titulo">MATEMATICA</div>
+				<div class="titulo" id="idPageProfesor_Notas_Detalle_Titulo">MATEMATICA</div>
 				<div id="no-more-tables">
 					<table>
 						<thead>
@@ -332,43 +332,31 @@
 								<th>APELLIDOS</th>
 								<th>NOMBRES</th>
 								<th>NOTA</th>
-								<th></th>
+								
 
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="AlumnosDeCursoByIdProfesor">
 							<tr>
 
 								<td data-title="APELLIDOS">ROQUE TITO</td>
 								<td data-title="NOMBRES">EDWIN</td>
-								<td data-title="NOTA">10</td>
-								<td data-title="">
-
-									<input type="checkbox" id="checkbox_label">
-									<label style="margin-top:-15px" for="checkbox_label"></label>
-								</td>
+								<td data-title="NOTA"> <input type="text" placeholder="test" value="10"></td>
+								
 							</tr>
 							<tr>
 
 								<td data-title="APELLIDOS">RAMOS VELASQUEZ</td>
 								<td data-title="NOMBRES">EDWIN</td>
-								<td data-title="NOTA">11</td>
-								<td data-title="">
-
-									<input type="checkbox" id="checkbox_label1">
-									<label style="margin-top:-15px" for="checkbox_label1"></label>
-								</td>
+								<td data-title="NOTA"><input type="text" placeholder="test" value="11"></td>
+								
 							</tr>
 							<tr>
 
 								<td data-title="APELLIDOS">FLORES CONDORI</td>
 								<td data-title="NOMBRES">RICHARD</td>
-								<td data-title="NOTA">12</td>
-								<td data-title="">
-
-									<input type="checkbox" id="checkbox_label2">
-									<label style="margin-top:-15px" for="checkbox_label2"></label>
-								</td>
+								<td data-title="NOTA"><input type="text" placeholder="test" value="12"></td>
+								
 							</tr>
 						</tbody>
 					</table>

@@ -29,8 +29,13 @@
         /* your code goes here */ 
        PROFESOR.onClickEscogerProfesor();
     });
-}
+    /* listitem  SEGUNDO EXAMEN */
+    $(document).on("click", "#DescripcionesDeCursoByIdProfesor", function(evt)
+    {
+        PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"));
+    });
     
+}  
 document.addEventListener("app.Ready", register_event_handlers, false);
     
 })();

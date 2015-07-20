@@ -1,3 +1,4 @@
+var PROFESOR_DAO=require('./profesorDAO.js');
 /**
  * Obtenemos todos los Cursos del Profesor por identificador.
  * 
@@ -14,26 +15,82 @@ module.exports.getCursoByIdProfesor=function(app){
 		    data=JSON.parse(data);
 		    //console.log(data);	
 		    
-		    var idProfesor=data.idProfesor;
+		     PROFESOR_DAO.getCursoByIdProfesor(data.idProfesor,function(respuesta,mensaje){
 
-			var curso={}
-		    	curso.id=1;
-		    	curso.nombre='MATEMATICA I';
-		    var curso1={}
-		    	curso1.id=2;
-		    	curso1.nombre='FISICA II';
-			
-		    var cursos=[];
-		    	cursos[0]=curso;
-		    	cursos[1]=curso1;
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
 
-			var msn={};
-			msn.data=cursos;	
-			msn.status=1;
-			msn.message=null;
-			
-		    res.json(msn);
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
 			
 		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.getDescripcionesDeCursoByIdProfesor=function(app){
+
+		app.post('/getDescripcionesDeCursoByIdProfesor', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.getDescripcionesDeCursoByIdProfesor(data.idProfesor,data.idCurso,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
 		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.getAlumnoDeDescripcionesDeCursoByIdCurso=function(app){
+
+		app.post('/getAlumnoDeDescripcionesDeCursoByIdCurso', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.getAlumnoDeDescripcionesDeCursoByIdCurso(data.idCurso,data.idNotaCabecera,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
 };///////////////////////////////////////////////////////////////////////////////////////////////////////////////	

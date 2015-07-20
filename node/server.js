@@ -32,3 +32,7 @@ ALUMNO.getHorariosDeCursoByIdAlumno(app);
 ALUMNO.getNotasDeCursoByIdAlumno(app);
 ALUMNO.getAsistenciasDeCursoByIdAlumno(app);
 PROFESOR.getCursoByIdProfesor(app);
+PROFESOR.getDescripcionesDeCursoByIdProfesor(app);
+PROFESOR.getAlumnoDeDescripcionesDeCursoByIdCurso(app);
+
+
