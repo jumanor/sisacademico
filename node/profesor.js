@@ -94,3 +94,32 @@ module.exports.getAlumnoDeDescripcionesDeCursoByIdCurso=function(app){
 		});
 				
 };///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(app){
+
+		app.post('/saveAlumnoDeDescripcionesDeCursoByIdCurso', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.saveAlumnoDeDescripcionesDeCursoByIdCurso(data.alumnos,data.idCurso,data.idNotaCabecera,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	

@@ -34,7 +34,14 @@
     {
         PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"));
     });
-    
+    $(document).on("click", "#saveNotasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickSaveNotasDeAlumno();
+    });
+    $(document).on("click", "#editNotasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickEditNotasDeAlumno();
+    });
 }  
 document.addEventListener("app.Ready", register_event_handlers, false);
     

@@ -64,7 +64,9 @@
        
         UTILS.ajaxGeneric(param,"getAlumnoDeDescripcionesDeCursoByIdCurso",function(data){
 
-            //console.log(data);//AlumnosDeCursoByIdProfesor
+            $("#AlumnosDeCursoByIdProfesor").attr("idcurso",idCurso);
+            $("#AlumnosDeCursoByIdProfesor").attr("idnotacabecera",idNotaCabecera);
+            
             $("#AlumnosDeCursoByIdProfesor").empty();
                 
                 for(var i=0;i<data.length;i++){
@@ -77,8 +79,10 @@
                         inicio.appendChild(document.createTextNode(data[i].nombres));
                     
                     var input=document.createElement("input");
+                        input.setAttribute("identificador",data[i].id);
                         input.setAttribute("type","text");
                         input.setAttribute("value",data[i].nota);
+                        input.disabled=true;
                     
                     var fin=document.createElement("td");
                         fin.setAttribute("data-title","NOTA");
@@ -96,6 +100,39 @@
         });
    	
    }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickSaveNotasDeAlumno=function(){
+        var n=$("#AlumnosDeCursoByIdProfesor input").length;
+        var alumnos=[];
+        for(var i=0;i<n;i++){
+            var alumno={};
+            alumno.id=$($("#AlumnosDeCursoByIdProfesor input")[i]).attr("identificador");
+            //alumno.id=$("#AlumnosDeCursoByIdProfesor input")[i].attributes[0].value
+            alumno.nota=$("#AlumnosDeCursoByIdProfesor input")[i].value;
+            //alumno.nota=$($("#AlumnosDeCursoByIdProfesor input")[i]).attr("value")
+            alumnos.push(alumno);
+        }  
+        var param={};
+        param.idCurso= $("#AlumnosDeCursoByIdProfesor").attr("idcurso");
+        param.idNotaCabecera=$("#AlumnosDeCursoByIdProfesor").attr("idnotacabecera");
+        param.alumnos=alumnos;
 
+        UTILS.ajaxGeneric(param,"saveAlumnoDeDescripcionesDeCursoByIdCurso",function(data){
+            if(data.estado===1){
+                UTILS.alert("GUARDAR","Se guardaron los registros");
+                for(var i=0;i<n;i++){
+                    $("#AlumnosDeCursoByIdProfesor input")[i].disabled=true;     
+                }
+                $("#saveNotasDeAlumno").attr("class","icon database");//DESMARCAMOS ICONO!!!
+            }
+        });
+   }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickEditNotasDeAlumno=function(){
+       var n=$("#AlumnosDeCursoByIdProfesor input").length;
+       for(var i=0;i<n;i++){
+            $("#AlumnosDeCursoByIdProfesor input")[i].disabled=false;     
+       }
+       UTILS.alert("EDITAR","Puede editar los registros");
+        //$("#editNotasDeAlumno").attr("class","icon tools");//DESMARCAMOS ICONO!!!
+   }///////////////////////////////////////////////////////////////////////////////// 
 	return my;
 }());

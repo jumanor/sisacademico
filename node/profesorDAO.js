@@ -179,6 +179,63 @@ module.exports.getAlumnoDeDescripcionesDeCursoByIdCurso=function(idCurso,idNotaC
 		}		
 	});
 }//////////////////////////////////////////////////////////////////////////////////////////////////////////
+module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(alumnos,idCurso,idNotaCabecera,callback){
+
+	
+			var series=[];
+			
+			for(var i=0;i<alumnos.length;i++){
+				series.push(alumnos[i].id);
+			}
+
+			async.forEachOf(series, function (value,key,callbackSeries) {//GENERAMOS SINCRONISMO
+					
+					AlumnoDB.findById(value).exec(function(err,data){
+						if(err){
+							console.log(err);
+							return callbackSeries(err);
+						}////////////////////////////
+						if(data==null){
+							return callbackSeries("ALUMNO NO ENCONTRADO");
+						}////////////////////////////
+						
+						var salida=false;
+						for(var j=0;j<data.cursos.length;j++){
+							if(data.cursos[j].idCurso==idCurso){
+
+								for(var w=0;w<data.cursos[j].notas.length;w++){
+									if(data.cursos[j].notas[w].idNotaCabecera==idNotaCabecera){
+										
+										data.cursos[j].notas[w].nota=alumnos[key].nota;
+										data.save(function(err,data){
+											if(err)
+												callbackSeries(err);//contrala las llamadas sincronas
+											else{
+												callbackSeries();
+												//salida=true;
+												//break;		
+											}
+										});
+									}
+
+								}	
+							}
+							if(salida==true)break;
+						}
+						
+					});
+					
+
+			},function (err) {
+
+			  if (err){ console.log(err.message);
+			  			callback(-1,err);					
+			  			}
+			  			
+			  callback({estado:1},null);
+			});
+	
+}//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

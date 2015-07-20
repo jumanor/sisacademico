@@ -34,5 +34,6 @@ ALUMNO.getAsistenciasDeCursoByIdAlumno(app);
 PROFESOR.getCursoByIdProfesor(app);
 PROFESOR.getDescripcionesDeCursoByIdProfesor(app);
 PROFESOR.getAlumnoDeDescripcionesDeCursoByIdCurso(app);
+PROFESOR.saveAlumnoDeDescripcionesDeCursoByIdCurso(app);
 
 
