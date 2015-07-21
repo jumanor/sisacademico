@@ -6,8 +6,8 @@ var schemaAsistencia = new mongoose.Schema({
 	fecha:Date
 });
 var schemaNota = new mongoose.Schema({
-	idNotaCabecera:{ type: mongoose.Schema.Types.ObjectId},
-	nota: Number,
+	idNotaCabecera:{ type: mongoose.Schema.Types.ObjectId},//esta relacionado con curso.js->cabeceraNotas
+	nota: { type: Number, default: 0 },
 	fecha:Date,
 	descripcion:String
 });

@@ -27,6 +27,7 @@
             param.idCurso=idCurso;    
             UTILS.ajaxGeneric(param,"getDescripcionesDeCursoByIdProfesor",function(data){
                 
+                $("#DescripcionesDeCursoByIdProfesor").attr("idcurso",idCurso);
                 $("#DescripcionesDeCursoByIdProfesor").empty();      
                 for(var i=0;i<data.length;i++){
                     
@@ -56,7 +57,9 @@
      * @param  {String} idnotacabecera 
      *     
      */
-   my.onClickEscogerNotaCabeceraProfesor=function(idCurso,idNotaCabecera){
+   my.onClickEscogerNotaCabeceraProfesor=function(idCurso,idNotaCabecera,descripcion){
+       
+       $("#idTituloExamen").text(descripcion);
        
         var param={};
         param.idCurso=idCurso; 
@@ -133,6 +136,26 @@
        }
        UTILS.alert("EDITAR","Puede editar los registros");
         //$("#editNotasDeAlumno").attr("class","icon tools");//DESMARCAMOS ICONO!!!
+   }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickAddTituloNotasDeAlumno=function(){
+       UTILS.prompt("AGREGAR","Ingrese un titulo",function(results){
+            console.log(results);
+           
+            if(results.buttonIndex==1){
+               
+                var idCurso=$("#DescripcionesDeCursoByIdProfesor").attr("idcurso");
+                var param={};
+                param.idCurso=idCurso;
+                param.descripcion=results.input1;
+                
+                UTILS.ajaxGeneric(param,"newDescripcionDeCursoByIdCurso",function(data){
+                    $("#DescripcionesDeCursoByIdProfesor").append("<li><a href='#idProfesor_Notas_Detalle' idcurso="+idCurso+" idnotacabecera="+data.idNotaCabecera +">"+data.descripcion+"</a></li>");
+                    
+                    $("#addTituloNotasDeAlumno").attr("class","icon add");//DESMARCAMOS ICONO!!!
+                });
+                
+            }
+       })
    }///////////////////////////////////////////////////////////////////////////////// 
 	return my;
 }());

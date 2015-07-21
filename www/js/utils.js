@@ -10,6 +10,23 @@ var UTILS = (function () {
                         'Aceptar'                  // buttonName
                     );
 	};///////////////////////////////////////////////////////////////////////////
+    my.confirm=function(titulo,mensaje,onConfirm){
+        navigator.notification.confirm(
+            mensaje, // message
+            onConfirm,            // callback to invoke with index of button pressed
+            titulo,           // title
+            ['Aceptar','Cancelar']     // buttonLabels
+        );
+    };///////////////////////////////////////////////////////////////////////////
+    my.prompt=function(titulo,mensaje,onPrompt){
+        
+        navigator.notification.prompt(
+            mensaje,  // message
+            onPrompt,                  // callback to invoke
+            titulo,            // title
+            ['Aceptar','Cancelar']
+        );
+    };///////////////////////////////////////////////////////////////////////////
     my.ajaxGeneric=function(param,uri,callback){
         
         $.ajax({

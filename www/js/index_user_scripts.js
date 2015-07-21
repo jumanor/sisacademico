@@ -32,7 +32,7 @@
     /* listitem  SEGUNDO EXAMEN */
     $(document).on("click", "#DescripcionesDeCursoByIdProfesor", function(evt)
     {
-        PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"));
+       window.evento=evt; PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"),$(evt.target).html());
     });
     $(document).on("click", "#saveNotasDeAlumno", function(evt)
     {
@@ -41,6 +41,10 @@
     $(document).on("click", "#editNotasDeAlumno", function(evt)
     {
        PROFESOR.onClickEditNotasDeAlumno();
+    });
+     $(document).on("click", "#addTituloNotasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickAddTituloNotasDeAlumno();
     });
 }  
 document.addEventListener("app.Ready", register_event_handlers, false);

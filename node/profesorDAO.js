@@ -1,3 +1,4 @@
+"use strict";
 var async=require("async");
 var ProfesorDB=require('./modelosDB/profesor.js');
 var CursoDB=require('./modelosDB/curso.js');
@@ -179,6 +180,16 @@ module.exports.getAlumnoDeDescripcionesDeCursoByIdCurso=function(idCurso,idNotaC
 		}		
 	});
 }//////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Guarda los notas del alumno
+ * 
+ * @param  {Array}		alumnos {String} id 	identificador del alumno
+ *                            	{String} notas 	nota del alumno
+ * @param  {String}		idCurso        
+ * @param  {String}		idNotaCabecera 
+ * 
+ * @return {Array}		{Number} estado                 
+ */
 module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(alumnos,idCurso,idNotaCabecera,callback){
 
 	
@@ -212,12 +223,13 @@ module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(alumnos,idCurs
 												callbackSeries(err);//contrala las llamadas sincronas
 											else{
 												callbackSeries();
-												//salida=true;
-												//break;		
+													
 											}
 										});
+										salida=true;
+										break;	
 									}
-
+										
 								}	
 							}
 							if(salida==true)break;
@@ -231,12 +243,78 @@ module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(alumnos,idCurs
 			  if (err){ console.log(err.message);
 			  			callback(-1,err);					
 			  			}
-			  			
+
 			  callback({estado:1},null);
 			});
 	
 }//////////////////////////////////////////////////////////////////////////////////////////////////////////
+module.exports.newDescripcionDeCursoByIdCurso=function(idCurso,descripcion,callback){
+	var fecha=Date.now();
+	
+	CursoDB.findById(idCurso).exec(function(err,curso){
+		if(err){
+				console.log(err);
+				return callback(-1,err);
+		}////////////////////////////
+		if(curso==null){
+			return callback(-1,"CURSO NO ENCONTRADO");
+		}
+		
+		curso.cabeceraNotas.push({descripcion:descripcion});
+		curso.save(function(err,data){
+			if(err){
+				console.log(err);
+				return callback(-1,err);
+			}////////////////////////////
+			var idNotaCabecera=data.cabeceraNotas[data.cabeceraNotas.length-1].id;
+			var param=[];
 
+			for(var w=0;w<curso.alumnos.length;w++){
+				param.push({_id:curso.alumnos[w]});
+			}
+			
+			AlumnoDB.find().or(param).exec(function(err,alumnos){
+				if(err){
+					console.log(err);
+					return callback(-1,err);
+				}////////////////////////////
+				
+				if(alumnos.length==0){
+					callback(-1,"NO HAY ALUMNOS");
+				}
+				else{
+						var series=[];
+						for(var i=0;i<alumnos.length;i++){
+							series.push(i);
+							for(var j=0;j<alumnos[i].cursos.length;j++){
+								if(alumnos[i].cursos[j].idCurso==idCurso){
+									alumnos[i].cursos[j].notas.push({nota:0,fecha:fecha,descripcion:descripcion,idNotaCabecera:idNotaCabecera});
+									
+								}
+
+							}
+						}
+						async.each(series,function(value,callbackSeries){
+							alumnos[value].save(function(err,data){
+								if(err)
+									callbackSeries(err);
+								
+								callbackSeries();		
+							});
+
+						},function (err){
+							  if (err){ console.log(err.message);
+							  			callback(-1,err);					
+							  }
+							  callback({idNotaCabecera:idNotaCabecera,descripcion:descripcion},null);
+						});
+
+				}
+			});
+		});
+		
+	});
+}//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

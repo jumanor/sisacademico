@@ -28,9 +28,9 @@ Login.find().populate("persona").exec(function(err,data){
 	 });
 });
 */
-Alumno.findById("55ab23e9bc1659a91be6e5b3").exec(function(err,data){
+Alumno.find().or([{_id:"55ab23e9bc1659a91be6e5b3"},{_id:"55ab23e9bc1659a91be6e5c9"}]).exec(function(err,data){
 	if(err)console.log(err);
 
-	console.log(data);
+	
 
 });

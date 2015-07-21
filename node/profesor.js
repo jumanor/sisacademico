@@ -123,3 +123,32 @@ module.exports.saveAlumnoDeDescripcionesDeCursoByIdCurso=function(app){
 		});
 				
 };///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.newDescripcionDeCursoByIdCurso=function(app){
+
+		app.post('/newDescripcionDeCursoByIdCurso', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.newDescripcionDeCursoByIdCurso(data.idCurso,data.descripcion,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	

@@ -190,8 +190,8 @@ function cargarData(){
 					login.persona=ALUMNO.id;
 					
 			        var login1=new LoginDB();
-				    login1.usuario="jumanor1";
-					login1.contrasenia="jumanor1";
+				    login1.usuario="jumanor";
+					login1.contrasenia="jumanor";
 					login1.perfil="Profesor";
 					login1.persona=PROFESOR.id;
 

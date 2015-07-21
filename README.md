@@ -19,3 +19,7 @@ Este aplicativo se realiza para probar INTEL XDK (APP FRAMEWORK) + PHONEGAP
 * Instale MongoDB
 * Ir a la carpeta "node" y ejecutar "node llenardata.js" (para llenar la BD con data de prueba)
 
+**OBSERVACIÓN**
+* La api "navigator.notification.prompt" de PHONEGAP no es emulado (EMULATE) por INTEL XDK, tendra que usar depuracion (DEBUG) para ver el correcto funcionamiento
+* Instalar Genymotion https://www.genymotion.com/
+

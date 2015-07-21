@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/sisacademico');
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,x-access-token');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
    
     next();
 }
@@ -35,5 +35,6 @@ PROFESOR.getCursoByIdProfesor(app);
 PROFESOR.getDescripcionesDeCursoByIdProfesor(app);
 PROFESOR.getAlumnoDeDescripcionesDeCursoByIdCurso(app);
 PROFESOR.saveAlumnoDeDescripcionesDeCursoByIdCurso(app);
+PROFESOR.newDescripcionDeCursoByIdCurso(app);
 
 
