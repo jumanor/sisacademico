@@ -18,13 +18,14 @@ var UTILS = (function () {
             ['Aceptar','Cancelar']     // buttonLabels
         );
     };///////////////////////////////////////////////////////////////////////////
-    my.prompt=function(titulo,mensaje,onPrompt){
+    my.prompt=function(titulo,mensaje,defecto,onPrompt){
         
         navigator.notification.prompt(
             mensaje,  // message
             onPrompt,                  // callback to invoke
             titulo,            // title
-            ['Aceptar','Cancelar']
+            ['Aceptar','Cancelar'],
+            defecto
         );
     };///////////////////////////////////////////////////////////////////////////
     my.ajaxGeneric=function(param,uri,callback){

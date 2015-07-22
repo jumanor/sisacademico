@@ -6,7 +6,10 @@ var schemaHorario = new mongoose.Schema({
     horaFin: String//13:00
 });
 var schemaCabeceraNota = new mongoose.Schema({
-	descripcion:String
+	descripcion:String	//ejm: PRIMER EXAMEN
+});
+var schemaCabeceraAsistencia = new mongoose.Schema({
+	descripcion:String	//ejm: 30-06-2015
 });
 var schemaCurso = new mongoose.Schema({
 
@@ -15,6 +18,7 @@ var schemaCurso = new mongoose.Schema({
     nombre: String,
     horarios:[schemaHorario],
     cabeceraNotas:[schemaCabeceraNota],
+    cabeceraAsistencias:[schemaCabeceraAsistencia],
     alumnos:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Alumno' }]	
 });
 module.exports=mongoose.model('Curso',schemaCurso);

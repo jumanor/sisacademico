@@ -29,10 +29,10 @@
         /* your code goes here */ 
        PROFESOR.onClickEscogerProfesor();
     });
-    /* listitem  SEGUNDO EXAMEN */
+    ////////////////////////NOTAS///////////////////////// 
     $(document).on("click", "#DescripcionesDeCursoByIdProfesor", function(evt)
     {
-       window.evento=evt; PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"),$(evt.target).html());
+       PROFESOR.onClickEscogerNotaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idnotacabecera"),$(evt.target).html());
     });
     $(document).on("click", "#saveNotasDeAlumno", function(evt)
     {
@@ -45,6 +45,23 @@
      $(document).on("click", "#addTituloNotasDeAlumno", function(evt)
     {
        PROFESOR.onClickAddTituloNotasDeAlumno();
+    });
+    ////////////////////////ASISTENCIAS/////////////////////////
+    $(document).on("click", "#DescripcionesAsistenciasDeCursoByIdProfesor", function(evt)
+    {
+   PROFESOR.onClickEscogerAsistenciaCabeceraProfesor($(evt.target).attr("idcurso"),$(evt.target).attr("idasistenciacabecera"),$(evt.target).html());
+    });
+      $(document).on("click", "#saveAsistenciasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickSaveAsistenciasDeAlumno();
+    });
+     $(document).on("click", "#editAsistenciasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickEditAsistenciasDeAlumno();
+    });
+    $(document).on("click", "#addTituloAsistenciasDeAlumno", function(evt)
+    {
+       PROFESOR.onClickAddTituloAsistenciasDeAlumno();
     });
 }  
 document.addEventListener("app.Ready", register_event_handlers, false);

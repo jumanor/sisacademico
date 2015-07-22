@@ -152,3 +152,119 @@ module.exports.newDescripcionDeCursoByIdCurso=function(app){
 		});
 				
 };///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.getDescripcionesDeCursoAsistenciaByIdProfesor=function(app){
+
+		app.post('/getDescripcionesDeCursoAsistenciaByIdProfesor', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.getDescripcionesDeCursoAsistenciaByIdProfesor(data.idProfesor,data.idCurso,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.getAlumnoDeDescripcionesDeAsistenciaByIdProfesor=function(app){
+
+		app.post('/getAlumnoDeDescripcionesDeAsistenciaByIdProfesor', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.getAlumnoDeDescripcionesDeAsistenciaByIdProfesor(data.idCurso,data.idAsistenciaCabecera,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.newDescripcionDeAsistenciaByIdCurso=function(app){
+
+		app.post('/newDescripcionDeAsistenciaByIdCurso', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.newDescripcionDeAsistenciaByIdCurso(data.idCurso,data.descripcion,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+module.exports.saveAlumnoDeDescripcionesDeCursoAsistenciaByIdCurso=function(app){
+
+		app.post('/saveAlumnoDeDescripcionesDeCursoAsistenciaByIdCurso', function(req, res){	
+	
+		    var data=req.param('data');
+		    data=JSON.parse(data);
+		    //console.log(data);	
+		    
+		     PROFESOR_DAO.saveAlumnoDeDescripcionesDeCursoAsistenciaByIdCurso(data.alumnos,data.idCurso,data.idAsistenciaCabecera,function(respuesta,mensaje){
+
+	    		var msn={};
+				msn.data=respuesta;
+				msn.status=1;
+				msn.message=null;
+
+				if(respuesta < 0){
+						 
+					msn.status=0;
+					msn.message={codigo:respuesta,message:mensaje};
+		
+				}
+					
+				res.json(msn);
+
+	    	});	
+			
+		});
+				
+};///////////////////////////////////////////////////////////////////////////////////////////////////////////////	

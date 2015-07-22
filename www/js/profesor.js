@@ -15,10 +15,26 @@
             //Capturamos el Curso Seleccionado
         var curso=$("#idCursosProfesor")[0].options[index].value;
 
-        if(opciones=="idEscogerProfesor_Asistencia"){
+        if(opciones=="idEscogerProfesor_Asistencia"){//PRIMERA OPCION
             $("#idGoProfesor_Asistencia").click();
-        }
-        else if(opciones=="idEscogerProfesor_Notas"){
+            $("#idPageProfesor_Asistencias_Detalle_Titulo").html(curso);
+
+            var param={};
+            param.idProfesor=GLOBAL_USUARIO.getIdentificador();
+            param.idCurso=idCurso;    
+            UTILS.ajaxGeneric(param,"getDescripcionesDeCursoAsistenciaByIdProfesor",function(data){
+                
+                $("#DescripcionesAsistenciasDeCursoByIdProfesor").attr("idcurso",idCurso);
+                $("#DescripcionesAsistenciasDeCursoByIdProfesor").empty();      
+                for(var i=0;i<data.length;i++){
+                    
+                    $("#DescripcionesAsistenciasDeCursoByIdProfesor").append("<li><a href='#idProfesor_Asistencia_Detalle' idcurso="+idCurso+" idasistenciacabecera="+data[i].idAsistenciaCabecera+">"+data[i].descripcion+"</a></li>");
+
+                }
+            });
+            
+        }////////////////////////////////////////////////////////////////
+        else if(opciones=="idEscogerProfesor_Notas"){//SEGUNDA OPCION
             $("#idGoProfesor_Notas").click();
             $("#idPageProfesor_Notas_Detalle_Titulo").html(curso);
 
@@ -155,6 +171,125 @@
                 });
                 
             }
+       })
+   }///////////////////////////////////////////////////////////////////////////////// 
+   //////////////////////////////////////////////////////////////////////////////////
+   //////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Captura el evento al realizar click en la Lista de las Cabeceras de la Asistencia(Descripciones de la asistencia)
+     *  @param  {String} idCurso 
+     *  @param  {String} idAsistenciaCabecera 
+     *     
+     */
+   my.onClickEscogerAsistenciaCabeceraProfesor=function(idCurso,idAsistenciaCabecera,descripcion){
+       
+       $("#idTituloAsistencia").text(descripcion);
+       
+        var param={};
+        param.idCurso=idCurso; 
+        param.idAsistenciaCabecera=idAsistenciaCabecera; 
+       
+        UTILS.ajaxGeneric(param,"getAlumnoDeDescripcionesDeAsistenciaByIdProfesor",function(data){
+
+            $("#AlumnosDeCursoAsistenciaByIdProfesor").attr("idcurso",idCurso);
+            $("#AlumnosDeCursoAsistenciaByIdProfesor").attr("idasistenciacabecera",idAsistenciaCabecera);
+            
+            $("#AlumnosDeCursoAsistenciaByIdProfesor").empty();
+                
+                for(var i=0;i<data.length;i++){
+                    
+                    var dia=document.createElement("td");
+                        dia.setAttribute("data-title","APELLIDOS");
+                        dia.appendChild(document.createTextNode(data[i].apPaterno+" "+data[i].apMaterno));
+                    var inicio=document.createElement("td");
+                        inicio.setAttribute("data-title","NOMBRES");
+                        inicio.appendChild(document.createTextNode(data[i].nombres));
+                    
+                    var input=document.createElement("input");
+                        input.setAttribute("identificador",data[i].id);
+                        input.setAttribute("type","checkbox");
+                        input.setAttribute("id","check"+i);
+                        input.disabled=true;
+                        if(data[i].asistencia===true)
+                            input.checked=true;
+                        else
+                            input.checked=false;
+                    
+                    var label=document.createElement("label");
+                        label.setAttribute("for","check"+i);
+                            
+                    var fin=document.createElement("td");
+                        fin.setAttribute("data-title","ASISTENCIA");
+                        fin.appendChild(input);
+                        fin.appendChild(label);
+                    
+                    var fila=document.createElement("tr");
+                        fila.appendChild(dia);
+                        fila.appendChild(inicio);
+                        fila.appendChild(fin);
+                        
+                    
+                    $("#AlumnosDeCursoAsistenciaByIdProfesor").append(fila);
+                }
+
+        });
+   	
+   }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickSaveAsistenciasDeAlumno=function(){
+        var n=$("#AlumnosDeCursoAsistenciaByIdProfesor input").length;
+        var alumnos=[];
+        for(var i=0;i<n;i++){
+            var alumno={};
+            alumno.id=$($("#AlumnosDeCursoAsistenciaByIdProfesor input")[i]).attr("identificador");
+            alumno.asistencia=$("#AlumnosDeCursoAsistenciaByIdProfesor input")[i].checked;
+            alumnos.push(alumno);
+        }  
+        var param={};
+        param.idCurso= $("#AlumnosDeCursoAsistenciaByIdProfesor").attr("idcurso");
+        param.idAsistenciaCabecera=$("#AlumnosDeCursoAsistenciaByIdProfesor").attr("idasistenciacabecera");
+        param.alumnos=alumnos;
+
+        UTILS.ajaxGeneric(param,"saveAlumnoDeDescripcionesDeCursoAsistenciaByIdCurso",function(data){
+            if(data.estado===1){
+                UTILS.alert("GUARDAR","Se guardaron los registros");
+                for(var i=0;i<n;i++){
+                    $("#AlumnosDeCursoAsistenciaByIdProfesor input")[i].disabled=true;     
+                }
+                $("#saveAsistenciasDeAlumno").attr("class","icon database");//DESMARCAMOS ICONO!!!
+            }
+        });
+   }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickEditAsistenciasDeAlumno=function(){
+       var n=$("#AlumnosDeCursoAsistenciaByIdProfesor input").length;
+       for(var i=0;i<n;i++){
+            $("#AlumnosDeCursoAsistenciaByIdProfesor input")[i].disabled=false;     
+       }
+       UTILS.alert("EDITAR","Puede editar los registros");
+        
+   }///////////////////////////////////////////////////////////////////////////////// 
+   my.onClickAddTituloAsistenciasDeAlumno=function(){
+        var fecha=new Date();
+        fecha=fecha.toISOString().split("T")[0];
+        fecha=fecha.split("-");
+        fecha=fecha[2]+"-"+fecha[1]+"-"+fecha[0];
+       
+       UTILS.prompt("AGREGAR","Ingrese una descripcion",fecha,function(results){
+            if(results.buttonIndex==1){
+               
+                var idCurso=$("#DescripcionesAsistenciasDeCursoByIdProfesor").attr("idcurso");
+                var param={};
+                param.idCurso=idCurso;
+                param.descripcion=results.input1;
+                //param.descripcion="PRIMERO";
+                
+                UTILS.ajaxGeneric(param,"newDescripcionDeAsistenciaByIdCurso",function(data){
+                
+                    $("#DescripcionesAsistenciasDeCursoByIdProfesor").append("<li><a href='#idProfesor_Asistencia_Detalle' idcurso="+idCurso+" idasistenciacabecera="+data.idAsistenciaCabecera+">"+data.descripcion+"</a></li>");
+                    
+                    $("#addTituloAsistenciasDeAlumno").attr("class","icon add");//DESMARCAMOS ICONO!!!
+                });
+                
+           }
        })
    }///////////////////////////////////////////////////////////////////////////////// 
 	return my;

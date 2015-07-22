@@ -94,6 +94,13 @@
 			<a class="icon tools" href="#" id="editNotasDeAlumno">Editar</a>
 			<a class="icon database" href="#" id="saveNotasDeAlumno">Guardar</a>
 		</footer>
+		<footer id="footerProfesorAsistencias">
+			<a class="icon add" href="#" id="addTituloAsistenciasDeAlumno">Agregar</a>
+		</footer>
+		<footer id="footerProfesorAsistenciasDetalle">
+			<a class="icon tools" href="#" id="editAsistenciasDeAlumno">Editar</a>
+			<a class="icon database" href="#" id="saveAsistenciasDeAlumno">Guardar</a>
+		</footer>
 		<header class="wrapping-col wrap-element uib_w_1" data-uib="app_framework/header" data-ver="2" id="af-header-2">
 			<h1>CREDENCIALES</h1>
 		</header>
@@ -119,10 +126,13 @@
 			<h1>ASISTENCIA</h1>
 		</header>
 		<header class="wrapping-col wrap-element uib_w_24 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-8"><a class="button backButton">Back</a>
-			<h1 >NOTAS</h1>
+			<h1>NOTAS</h1>
 		</header>
 		<header class="wrapping-col wrap-element uib_w_29 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-9"><a class="button backButton">Back</a>
 			<h1 id="idTituloExamen">CURSO</h1>
+		</header>
+		<header class="wrapping-col wrap-element uib_w_34 with-back" data-uib="app_framework/header" data-ver="2" id="af-header-10"><a class="button backButton">Back</a>
+			<h1 id="idTituloAsistencia">30-06-2015</h1>
 		</header>
 		<div class="uwrap" id="content">
 			<div class="upage panel vertical-col" id="mainpage" data-header="af-header-2" data-footer="none">
@@ -310,7 +320,64 @@
 				</div>
 
 			</div>
-			<div class="upage vertical-col left panel" id="idPageProfesor_Asistencia" data-header="af-header-7" data-footer="none"></div>
+			<div class="upage vertical-col left panel" id="idPageProfesor_Asistencia" data-header="af-header-7" data-footer="footerProfesorAsistencias">
+				<ul id="DescripcionesAsistenciasDeCursoByIdProfesor" class="list widget uib_w_30 d-margins" data-uib="app_framework/listview" data-ver="1">
+					<li class="widget uib_w_31" data-uib="app_framework/listitem" data-ver="1"><a href="idProfesor_Asistencia_Detalle">30-06-2015</a>
+					</li>
+					<li class="widget uib_w_32" data-uib="app_framework/listitem" data-ver="1"><a>01-07-2015</a>
+					</li>
+					<li class="widget uib_w_33" data-uib="app_framework/listitem" data-ver="1"><a>02-07-2015</a>
+					</li>
+				</ul>
+			</div>
+			<div class="upage vertical-col left panel" id="idProfesor_Asistencia_Detalle" data-header="af-header-10" data-footer="footerProfesorAsistenciasDetalle">
+				<div class="titulo" id="idPageProfesor_Asistencias_Detalle_Titulo">MATEMATICA</div>
+				<div id="no-more-tables">
+					<table>
+						<thead>
+							<tr>
+								<th>APELLIDOS</th>
+								<th>NOMBRES</th>
+								<th>ASISTENCIA</th>
+
+							</tr>
+						</thead>
+						<tbody id="AlumnosDeCursoAsistenciaByIdProfesor">
+							<tr>
+
+								<td data-title="APELLIDOS">ROQUE TITO</td>
+								<td data-title="NOMBRES">EDWIN</td>
+								<td data-title="ASISTENCIA">
+									<input type="checkbox" id="checkbox_label">
+									<label for="checkbox_label"></label>
+								</td>
+
+							</tr>
+							<tr>
+
+								<td data-title="APELLIDOS">RAMOS VELASQUEZ</td>
+								<td data-title="NOMBRES">EDWIN</td>
+								<td data-title="ASISTENCIA">
+									<input type="checkbox" id="checkbox_label1">
+									<label for="checkbox_label1"></label>
+								</td>
+
+							</tr>
+							<tr>
+
+								<td data-title="APELLIDOS">FLORES CONDORI</td>
+								<td data-title="NOMBRES">RICHARD</td>
+								<td data-title="ASISTENCIA">
+									<input type="checkbox" id="checkbox_label2">
+									<label for="checkbox_label2"></label>
+								</td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
 			<div class="upage vertical-col panel" id="idPageProfesor_Notas" data-header="af-header-8" data-footer="footerProfesorNotas">
 				<ul id="DescripcionesDeCursoByIdProfesor" class="list widget uib_w_25 d-margins" data-uib="app_framework/listview" data-ver="1">
 					<li class="widget uib_w_26" data-uib="app_framework/listitem" data-ver="1"><a href="#idProfesor_Notas_Detalle">PRIMER EXAMEN</a>
@@ -322,7 +389,7 @@
 				</ul>
 
 			</div>
-			<div class="upage vertical-col left panel" id="idProfesor_Notas_Detalle" data-header="af-header-9" data-footer="footerProfesorNotasDetalle">
+			<div class="upage vertical-col panel" id="idProfesor_Notas_Detalle" data-header="af-header-9" data-footer="footerProfesorNotasDetalle">
 				<div class="titulo" id="idPageProfesor_Notas_Detalle_Titulo">MATEMATICA</div>
 				<div id="no-more-tables">
 					<table>
@@ -331,7 +398,6 @@
 								<th>APELLIDOS</th>
 								<th>NOMBRES</th>
 								<th>NOTA</th>
-								
 
 							</tr>
 						</thead>
@@ -340,28 +406,35 @@
 
 								<td data-title="APELLIDOS">ROQUE TITO</td>
 								<td data-title="NOMBRES">EDWIN</td>
-								<td data-title="NOTA"> <input type="text" placeholder="test" value="10"></td>
-								
+								<td data-title="NOTA">
+									<input type="text" placeholder="test" value="10">
+								</td>
+
 							</tr>
 							<tr>
 
 								<td data-title="APELLIDOS">RAMOS VELASQUEZ</td>
 								<td data-title="NOMBRES">EDWIN</td>
-								<td data-title="NOTA"><input type="text" placeholder="test" value="11"></td>
-								
+								<td data-title="NOTA">
+									<input type="text" placeholder="test" value="11">
+								</td>
+
 							</tr>
 							<tr>
 
 								<td data-title="APELLIDOS">FLORES CONDORI</td>
 								<td data-title="NOMBRES">RICHARD</td>
-								<td data-title="NOTA"><input type="text" placeholder="test" value="12"></td>
-								
+								<td data-title="NOTA">
+									<input type="text" placeholder="test" value="12">
+								</td>
+
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
 			</div>
+
 		</div>
 
 	</body>

@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
 var schemaAsistencia = new mongoose.Schema({
+	idAsistenciaCabecera:{ type: mongoose.Schema.Types.ObjectId},//esta relacionado con curso.js->cabeceraAsistencias	
 	asistencia:Boolean,
 	comentario:{ type: String, default: "-" },
-	fecha:Date
+	fecha:Date,
+	descripcion:String
 });
 var schemaNota = new mongoose.Schema({
 	idNotaCabecera:{ type: mongoose.Schema.Types.ObjectId},//esta relacionado con curso.js->cabeceraNotas

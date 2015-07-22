@@ -32,9 +32,15 @@ ALUMNO.getHorariosDeCursoByIdAlumno(app);
 ALUMNO.getNotasDeCursoByIdAlumno(app);
 ALUMNO.getAsistenciasDeCursoByIdAlumno(app);
 PROFESOR.getCursoByIdProfesor(app);
+
 PROFESOR.getDescripcionesDeCursoByIdProfesor(app);
 PROFESOR.getAlumnoDeDescripcionesDeCursoByIdCurso(app);
 PROFESOR.saveAlumnoDeDescripcionesDeCursoByIdCurso(app);
 PROFESOR.newDescripcionDeCursoByIdCurso(app);
+
+PROFESOR.getDescripcionesDeCursoAsistenciaByIdProfesor(app);
+PROFESOR.getAlumnoDeDescripcionesDeAsistenciaByIdProfesor(app);
+PROFESOR.saveAlumnoDeDescripcionesDeCursoAsistenciaByIdCurso(app);
+PROFESOR.newDescripcionDeAsistenciaByIdCurso(app);
 
 
