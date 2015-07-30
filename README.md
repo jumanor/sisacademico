@@ -2,6 +2,9 @@ SISACADEMICO
 =====================================================================
 Este aplicativo se realiza para probar INTEL XDK (APP FRAMEWORK) + PHONEGAP
 
+**INSTALACIÓN**
+* https://www.youtube.com/watch?v=A5htd9oIlPs
+
 **INSTALACIÓN CLIENTE**
 * Descargue el Proyecto
 * En el IDE Intel XDK ejecute "OPEN AN INTEL XDK PROYECT" y abra el archivo "ProyectoFinal.xdk"
@@ -23,3 +26,4 @@ Este aplicativo se realiza para probar INTEL XDK (APP FRAMEWORK) + PHONEGAP
 * La api "navigator.notification.prompt" de PHONEGAP no es emulado (EMULATE) por INTEL XDK, tendra que usar depuracion (DEBUG) para ver el correcto funcionamiento
 * Instalar Genymotion https://www.genymotion.com/
 
+![a link](http://googledrive.com/host/0B72oLqC-8YVbfm10bXJTOFNUejNic1AzQzNKZUtWYkNvVnBpMV9ZbDJhOUo1TlUxNHI4YU0/sisacademico.png?raw=true)

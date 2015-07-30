@@ -154,7 +154,7 @@
         //$("#editNotasDeAlumno").attr("class","icon tools");//DESMARCAMOS ICONO!!!
    }///////////////////////////////////////////////////////////////////////////////// 
    my.onClickAddTituloNotasDeAlumno=function(){
-       UTILS.prompt("AGREGAR","Ingrese un titulo",function(results){
+       UTILS.prompt("AGREGAR","Ingrese un titulo","",function(results){
             console.log(results);
            
             if(results.buttonIndex==1){
