@@ -112,6 +112,7 @@ module.exports.getNotasDeCursoByIdAlumno=function(app){
 				}
 					
 				res.json(msn);
+				//setTimeout(function(){ res.json(msn); }, 3000);
 
 	    });		
 	});	

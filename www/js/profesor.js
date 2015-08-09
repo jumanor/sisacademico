@@ -16,7 +16,7 @@
         var curso=$("#idCursosProfesor")[0].options[index].value;
 
         if(opciones=="idEscogerProfesor_Asistencia"){//PRIMERA OPCION
-            $("#idGoProfesor_Asistencia").click();
+            
             $("#idPageProfesor_Asistencias_Detalle_Titulo").html(curso);
 
             var param={};
@@ -24,6 +24,7 @@
             param.idCurso=idCurso;    
             UTILS.ajaxGeneric(param,"getDescripcionesDeCursoAsistenciaByIdProfesor",function(data){
                 
+                $("#idGoProfesor_Asistencia").click();    
                 $("#DescripcionesAsistenciasDeCursoByIdProfesor").attr("idcurso",idCurso);
                 $("#DescripcionesAsistenciasDeCursoByIdProfesor").empty();      
                 for(var i=0;i<data.length;i++){
@@ -35,7 +36,7 @@
             
         }////////////////////////////////////////////////////////////////
         else if(opciones=="idEscogerProfesor_Notas"){//SEGUNDA OPCION
-            $("#idGoProfesor_Notas").click();
+            
             $("#idPageProfesor_Notas_Detalle_Titulo").html(curso);
 
             var param={};
@@ -43,6 +44,7 @@
             param.idCurso=idCurso;    
             UTILS.ajaxGeneric(param,"getDescripcionesDeCursoByIdProfesor",function(data){
                 
+                $("#idGoProfesor_Notas").click();
                 $("#DescripcionesDeCursoByIdProfesor").attr("idcurso",idCurso);
                 $("#DescripcionesDeCursoByIdProfesor").empty();      
                 for(var i=0;i<data.length;i++){

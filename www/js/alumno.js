@@ -20,15 +20,17 @@ var ALUMNO = (function () {
             
         
         if(opciones=="idEscogerAlumno_Notas"){
-            $("#idGoAlumno_Notas").click();
+            
             $("#idPageAlumno_Notas_Titulo").html(curso);
             
             
             var param={};
             param.idAlumno=GLOBAL_USUARIO.getIdentificador();
-            param.idCurso=idCurso;    
+            param.idCurso=idCurso;
+            
             UTILS.ajaxGeneric(param,"getNotasDeCursoByIdAlumno",function(data){
-                
+              
+                $("#idGoAlumno_Notas").click();    
                 $("#NotasDeCursoByIdAlumno").empty();
                 
                 for(var i=0;i<data.length;i++){
@@ -59,14 +61,14 @@ var ALUMNO = (function () {
             
         }
         else if(opciones=="idEscogerAlumno_Horario"){
-            $("#idGoAlumno_Horario").click();
+            
             $("#idPageAlumno_Horario_Titulo").html(curso);
             
             var param={};
             param.idAlumno=GLOBAL_USUARIO.getIdentificador();
             param.idCurso=idCurso;    
             UTILS.ajaxGeneric(param,"getHorariosDeCursoByIdAlumno",function(data){
-                
+                $("#idGoAlumno_Horario").click();
                 $("#HorariosDeCursoByIdAlumno").empty();
                 
                 for(var i=0;i<data.length;i++){
@@ -102,7 +104,7 @@ var ALUMNO = (function () {
             
         }
         else if(opciones=="idEscogerAlumno_Asistencia"){
-            $("#idGoAlumno_Asistencia").click();
+            
             $("#idPageAlumno_Asistencias_Titulo").html(curso);
             
             
@@ -110,7 +112,7 @@ var ALUMNO = (function () {
             param.idAlumno=GLOBAL_USUARIO.getIdentificador();
             param.idCurso=idCurso;    
             UTILS.ajaxGeneric(param,"getAsistenciasDeCursoByIdAlumno",function(data){
-                
+                $("#idGoAlumno_Asistencia").click();
                 $("#AsistenciasDeCursoByIdAlumno").empty();
                 
                 for(var i=0;i<data.length;i++){

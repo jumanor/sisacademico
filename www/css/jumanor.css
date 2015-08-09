@@ -11,3 +11,6 @@
     border-top-width: 1px;
     border-top-color: #ccc;
 }
+.buttonPopUp{
+    display:none !important;
+}

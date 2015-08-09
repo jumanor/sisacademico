@@ -29,6 +29,9 @@ var UTILS = (function () {
         );
     };///////////////////////////////////////////////////////////////////////////
     my.ajaxGeneric=function(param,uri,callback){
+        var mostrar=true;
+        var popup=null;
+        if(mostrar===true){popup=UTILS.popup("Procesando...");}
         
         $.ajax({
             type:"POST",
@@ -38,6 +41,7 @@ var UTILS = (function () {
             success:function(data){
                 var data=JSON.parse(data);
                 if(data.status===1){
+                    if(popup!=null)popup.hide();
                     callback(data.data);
                 }
                 if(data.status===0){
@@ -69,6 +73,10 @@ var UTILS = (function () {
             }
         });
     
+    };///////////////////////////////////////////////////////////////////////////
+    my.popup=function(msn){
+        var popup= $.ui.popup({title:msn,cancelOnly:true,cancelClass:"buttonPopUp"});
+        return popup;
     };///////////////////////////////////////////////////////////////////////////
 	return my;
 }());
